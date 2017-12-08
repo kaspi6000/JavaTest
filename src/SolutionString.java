@@ -6,7 +6,36 @@ public class SolutionString {
 		//solution1();
 		//solution2();
 		//solution3();
-		solution4();
+		//solution4();
+		solution9();
+	}
+	
+	public static void solution9() {
+		
+//		요구사항]	공백 제거하시오.
+//				원본] 문자열 : "		하나		둘		셋		"
+//				출력] 문자열 : "		하나둘셋		"
+		
+		String sentence = "     하나          둘              셋             ";
+		
+		char test = ' ';
+		
+		String result = "";
+		
+		int test1 = sentence.charAt(test);
+		System.out.println("test 1 : " + test1);
+		
+		for (int i = 0; i < sentence.length(); i++) {
+			if ((int)sentence.charAt(i) > 44000) {
+				System.out.println(sentence.replace((int)sentence.charAt(i+2), ""));
+			}
+		}
+		
+		System.out.println(sentence + "[" + test + "]");
+		System.out.println((int)test);
+		System.out.println("test1 : " + sentence.replace(sentence, ""));
+		System.out.println("test : " + (int)sentence.charAt(4));
+		System.out.println((int)'강');
 	}
 	
 	public static void solution4() {
