@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.Scanner;
 
 public class Ex27_String {
 	public static void main(String[] args) throws IOException {
@@ -41,7 +42,293 @@ public class Ex27_String {
 		
 		//q1();
 		
-		m10();
+		//m10();
+		//m11();
+		//m12();
+		//m13();
+		//m14();
+		//m15();
+		//m16();
+		//m17();
+		
+		int a = 10;
+		
+		if (a > 0) 
+			System.out.println("참");
+		
+		
+		for (int i = 0; i < 5; i++) 
+			System.out.println(i);
+		
+		
+	}
+	
+	public static void m17() {
+		
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("아이디 : ");
+		String id = scan.nextLine();
+		
+		if (idCheck(id)) {
+			System.out.printf("입력하신 아이디 '%s'는 사용 가능합니다.\n", id);
+		}else {
+			System.out.printf("입력하신 아이디 '%s'는 사용 불가능합니다.\n", id);
+		}
+	}
+	
+	private static boolean idCheck(String id) {
+		
+		//boolean isValid = true;
+		
+		//1. 4자 ~ 12자 이내
+		if (id.length() < 4 || id.length() > 12) {
+			System.out.println("4자 ~ 12자 이내");
+			return false;
+		}
+		
+		//2. 영문자 + 숫자 + _
+		for (int i = 0; i < id.length(); i++) {
+			char c = id.charAt(i);
+			if ((c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && (c < '0' || c > '9') && c != '_') {
+				System.out.println("영문자 + 숫자  + _");
+				return false;
+				//break;
+			}
+		}
+		
+		//3. 숫자로 시작 불가능
+		char c = id.charAt(0);
+		if (c >= '0' && c <= '9') {
+			System.out.println("숫자로 시작 불가능");
+			return false;
+		}
+				
+		return true;
+	}
+
+	public static void m16() {
+		
+		//유효성 검사
+		//아이디 입력
+		//1. 4자 ~ 12자 이내
+		//2. 영문자 + 숫자 + _
+		//3. 숫자로 시작 불가능
+		
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("아이디 : ");
+		String id = scan.nextLine();
+		
+		//1. 잘못된 부분을 조건으로 검사
+		//2. 결과 boolean을 사용해서 판단
+		
+		boolean isValid = true;
+		
+		//1. 4자 ~ 12자 이내
+		if (id.length() < 4 || id.length() > 12) {
+			System.out.println("4자 ~ 12자 이내");
+			isValid = false;
+		}
+		
+		//2. 영문자 + 숫자 + _
+		for (int i = 0; i < id.length(); i++) {
+			char c = id.charAt(i);
+			if ((c < 'A' || c > 'Z') && (c < 'a' || c > 'z') && (c < '0' || c > '9') && c != '_') {
+				System.out.println("영문자 + 숫자  + _");
+				isValid = false;
+				break;
+			}
+		}
+		
+		//3. 숫자로 시작 불가능
+		char c = id.charAt(0);
+		if (c >= '0' && c <= '9') {
+			System.out.println("숫자로 시작 불가능");
+			isValid = false;
+		}
+		
+		//최종
+		if (isValid) {
+			System.out.printf("입력하신 아이디 '%s'는 사용 가능합니다.\n", id);
+		}else {
+			System.out.printf("입력하신 아이디 '%s'는 사용 불가능합니다.\n", id);
+		}
+	}
+	
+	public static void m15() {
+		
+		//사용자 입력
+		//	- System.in.read() -> BufferedReader -> Scanner
+		
+		Scanner scan = new Scanner(System.in);
+		
+		//이름(문자열) 입력
+		System.out.print("이름 입력 : ");
+		String name = scan.nextLine();
+		
+		System.out.println(name);
+		
+		//숫자 입력
+		System.out.print("숫자 입력 : ");
+		int num = Integer.parseInt(scan.nextLine());
+		
+		System.out.println(num + 10);
+		
+		System.out.print("숫자 입력 : ");
+		num = scan.nextInt();
+		
+		System.out.println(num + 10);
+		
+		System.out.print("숫자 입력 : ");
+		num = scan.nextInt();
+		
+		System.out.println(num + 10);
+		
+		//Scanner 사용 시 주의점
+		//	- nextInt() -> nextLine() 사용시
+		//		-> nextInt()가 \r\n 남겨버린다. -> \r\n을 nextLine()이 사용한다.
+		//scan.nextLine();
+		scan.skip("\r\n");
+		
+		System.out.println("문자열 입력 : ");
+		String str = scan.nextLine();
+		System.out.println(str);
+		
+		String s1 = scan.nextLine();
+		String s2 = scan.next();
+		
+		System.out.println(s1);
+		System.out.println(s2);
+		
+	}
+	
+	public static void m14() {
+		
+		//형식 문자열 지원
+		//	- printf() : 화면 출력만 //콘솔 전용
+		//	- String format() : 형식 문자를 사용해서 형식을 가공한 문자열을 출력이 아닌 그대로 반환
+		
+//		System.out.printf("%d\n", 100);
+//		System.out.println("%d\n", 100);
+//		System.out.print("%d\n", 100);
+		
+		String name = "홍길동";
+		String result = String.format("안녕하세요. %s님", name);
+		
+		System.out.println(result);
+	}
+	
+	public static void m13() {
+		
+		//대소문자 변환
+		String str = "Hello~ Hong";
+		String result = ""; //누적변수
+		
+		for (int i = 0; i < str.length(); i++) {
+			char c = str.charAt(i);
+//			String c = str.substring(i, i+1); //문자코드값 x
+			
+			if (c >= 'a' && c <= 'z') {
+				result += (char)(c - 32);
+			}else {
+				result += c;
+			}
+		}
+		
+		System.out.println(result);
+		
+		//	- String toUpperCase();
+		//	- String toLowerCase();
+		System.out.println(str.toLowerCase());
+		System.out.println(str.toUpperCase());
+		
+		String content = "대상 문자열.. 글내용.. Java가 어쩌구";
+		String search = "java";
+		
+//		if (content.contains(search)) {
+		if (content.toLowerCase().contains(search.toLowerCase())) {
+			System.out.println("pass");
+		}else {
+			System.out.println("fail");
+		}
+		
+		String s1 = "Hong";
+		String s2 = "hong";
+		
+		System.out.println(s1.equals(s2));
+		System.out.println(s1.toUpperCase().equals(s2.toUpperCase()));
+		
+		System.out.println(s1.equalsIgnoreCase(s2));
+		
+		str = "";
+		
+		//비어있습니까?
+//		if (str.equals("")) {
+//		if (str.isEmpty()) {
+		if (isEmpty(str)) {
+			System.out.println("비었음");
+		}else {
+			System.out.println("있음");
+		}
+		
+		//자바 메소드명
+		//1. isxxx() : 확인? -> boolean 반환
+		//2. getxxx() : 값을 반환 + 읽기
+		//3. setxxx() : 값을 전달 + 세팅 + 쓰기
+	}
+	
+	public static boolean isEmpty(String str) {
+		
+		if (str.equals("")) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public static void m12() {
+		
+		//특정 문자열의 포함 유무
+		//	- boolean contains(String word)
+		String str = "안녕하세요. 홍길동님.";
+		
+		System.out.println(str.contains("홍길동"));
+		System.out.println(str.contains("아무개"));
+		System.out.println(str.indexOf("홍길동") > -1);
+	}
+	
+	public static void m11() {
+		
+		//문자열 치환, 바꾸기
+		//	- 대상 문자열에서 특정 문자열을 찾아서 다른 문자열로 바꾸기
+		//	- String replace(String old, String new);
+		
+		String str = "안녕하세요. 홍길동님. 안녕히가세요. 홍길동님.";
+		
+		String word1 = "홍길동";
+		String word2 = "아무개";
+		
+		//str : word1 -> word2
+		
+		String sub1 = str.substring(0, str.indexOf(word1));
+		String sub2 = str.substring(str.indexOf(word1) + word1.length());
+		
+		System.out.println(sub1 + word2 + sub2);
+		
+		System.out.println(str.replace(word1, word2));
+		System.out.println(str.replace(word1, ""));
+		System.out.println(str.replace(" ", ""));
+		
+		//주민번호 입력 - > '-' 입력
+		String jumin = "923456-2345678";
+		
+		System.out.println(jumin.replace("-", ""));
+		
+		//게시판 글쓰기 -> 금지어 "바보"
+		String content = "게시판 바보야";
+		
+		System.out.println(content.replace("바보", "**"));
 	}
 	
 	public static void m10() {
