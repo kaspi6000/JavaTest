@@ -16,26 +16,36 @@ public class SolutionString {
 //				원본] 문자열 : "		하나		둘		셋		"
 //				출력] 문자열 : "		하나둘셋		"
 		
-		String sentence = "     하나          둘              셋             ";
+		String sentence = "     하나     둘              셋             ";
 		
-		char test = ' ';
-		
+		String sentence1 = "";
+		String sentence2 = "";
+		String sentence3 = "";
 		String result = "";
 		
-		int test1 = sentence.charAt(test);
-		System.out.println("test 1 : " + test1);
-		
 		for (int i = 0; i < sentence.length(); i++) {
-			if ((int)sentence.charAt(i) > 44000) {
-				System.out.println(sentence.replace((int)sentence.charAt(i+2), ""));
+			if ((int)sentence.charAt(i) > 32) {
+				String test = sentence.substring(i);
+				sentence1 = sentence.replace(test, "");
+				break;
 			}
 		}
 		
-		System.out.println(sentence + "[" + test + "]");
-		System.out.println((int)test);
-		System.out.println("test1 : " + sentence.replace(sentence, ""));
-		System.out.println("test : " + (int)sentence.charAt(4));
-		System.out.println((int)'강');
+		for (int i = sentence.length() - 1; i >= 0; i--) {
+			if ((int)sentence.charAt(i) > 32) {
+				sentence3 = sentence.substring(i+1);
+				break;
+			}
+		}
+		sentence2 = sentence.replace(" ", "");
+		
+		result = sentence1 + sentence2 + sentence3;
+		
+		System.out.println("sentence : " + sentence);
+		System.out.println("sentence1 : " + sentence1);
+		System.out.println("sentence2 : " + sentence2);
+		System.out.println("sentence3 : " + sentence3);
+		System.out.println("result : " + result);
 	}
 	
 	public static void solution4() {
