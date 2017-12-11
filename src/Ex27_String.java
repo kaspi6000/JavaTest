@@ -50,19 +50,53 @@ public class Ex27_String {
 		//m15();
 		//m16();
 		//m17();
+		//m18();
+		//m19();
 		
-		int a = 10;
-		
-		if (a > 0) 
-			System.out.println("참");
-		
-		
-		for (int i = 0; i < 5; i++) 
-			System.out.println(i);
+//		int a = 10;
+//		
+//		if (a > 0) 
+//			System.out.println("참");
+//		
+//		
+//		for (int i = 0; i < 5; i++) 
+//			System.out.println(i);
 		
 		
 	}
 	
+	public static void m19() {
+		
+		//12자리 루프로 접근(x 2...9 -> 총합)
+		String jumin = "951211-1023456";
+		jumin = jumin.replace("-", "");
+		
+		for (int i = 0; i < 12; i++) {
+			//문자열의 문자 추출 -> 정수 변환
+			//	1. charAt() -> 문자코드값(code - 48)
+			//	2. substring() -> Integer.parseInt() //추천
+			int n = Integer.parseInt(jumin.substring(i, i+1));
+			System.out.println(n + "," + (i % 8 + 2));
+		}
+	}
+	
+	public static void m18() {
+		
+		//숫자를 3자리로 만들기
+		//	1 -> 001
+		
+		String result = paddingZero(4, 10);
+		System.out.println(result); //"0010"
+
+		result = paddingZero(8, 123);
+		System.out.println(result); //"00000123"
+	}
+	
+	private static String paddingZero(int size, int num) {
+		
+		return null;
+	}
+
 	public static void m17() {
 		
 		Scanner scan = new Scanner(System.in);

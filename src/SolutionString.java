@@ -18,13 +18,13 @@ public class SolutionString {
 		
 		String sentence = "     하나     둘              셋             ";
 		
-		String sentence1 = "";
-		String sentence2 = "";
-		String sentence3 = "";
-		String result = "";
+		String  sentence1 = "",
+				sentence2 = "",
+				sentence3 = "",
+				result = "";
 		
 		for (int i = 0; i < sentence.length(); i++) {
-			if ((int)sentence.charAt(i) > 32) {
+			if (sentence.charAt(i) > 32) {
 				String test = sentence.substring(i);
 				sentence1 = sentence.replace(test, "");
 				break;
@@ -32,7 +32,7 @@ public class SolutionString {
 		}
 		
 		for (int i = sentence.length() - 1; i >= 0; i--) {
-			if ((int)sentence.charAt(i) > 32) {
+			if (sentence.charAt(i) > 32) {
 				sentence3 = sentence.substring(i+1);
 				break;
 			}
@@ -117,9 +117,6 @@ public class SolutionString {
 			for (int i = num.length(); i < 3; i++) {
 				num+="0";	
 			}
-//			for (int j = num.length() - 1; j >= 0; j--) {
-//				System.out.print(num.charAt(j));
-//			}
 			System.out.println(num);
 		}
 	}
