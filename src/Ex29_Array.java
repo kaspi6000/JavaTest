@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Ex29_Array {
@@ -15,14 +16,244 @@ public class Ex29_Array {
 		//m5();
 		//m6();
 		//m7();
-		m8();
+		//m8();
+		//m9();
+		//m10();
+		//m11();
+		//m12();
+		m13();
+	}
+	public static void m13() {
+		
+		//2개의 변수값을 서로 교환
+		//swap
+		int a = 10;
+		int b = 20;
+		
+		int temp;
+		
+		temp = a;
+		a = b;
+		b = temp;
+		
+		System.out.println("a : " + a);
+		System.out.println("b : " + b);
+	}
+	
+	public static void m12() {
+		
+		//문제 풀이
+		int[][] nums = new int[5][5];
+		
+		int n = 1;
+		
+		//배열 초기화
+		for (int i = 0; i < 5; i++) {
+			for (int j = 0; j < 5; j++) {
+				nums[i][j] = n;
+				n++;
+			}
+		}
+		
+		//출력용(수정 금지)
+		for (int i = 0; i < 5; i++) {
+			for (int j = 0; j < 5; j++) {
+				System.out.printf("%4d", nums[i][j]);
+			}
+			System.out.println();
+		}
+	}
+	
+	public static void m11() {
+		
+		//배열 복사
+		//1. 얕은 복사(기본)
+		//	- 참조 변수의 복사 -> 주소값 복사
+		//2. 깊은 복사
+		//	- 실제 배열의 복사본을 만들기
+		
+		int[] ns = {10, 20, 30, 40, 50}; //원본배열
+		int[] copy1;
+		int[] copy2;
+		
+		//얕은 복사
+		copy1 = ns;
+		
+		//얕은 복사의 특징
+		copy1[0] = 100;
+		System.out.println(ns[0]);
+		
+		//깊은 복사
+		copy2 = new int[ns.length];
+		
+		for (int i = 0; i < ns.length; i++) {
+			//방 -> 방
+			//int -> int
+			//값 복사
+			copy2[i] = ns[i];
+		}
+		
+		copy2[1] = 200;
+		System.out.println(ns[1]);
+		
+		int[] copy3 = deepCopy(ns);
+	}
+	
+	//배열 깊은 복사 메소드(int[])
+	public static int[] deepCopy(int[] ns) {
+		
+		int[] temp = new int[ns.length];
+		
+		for (int i = 0; i < ns.length; i++) {
+			temp[i] = ns[i]; //깊은 복사, 값복사
+		}
+		
+		return temp;
+	}
+	
+	public static void m10() {
+		
+		//초기화 리스트
+		int[] ns1 = {10, 20, 30};
+		int[][] ns2 = { {10, 20, 30}, {40, 50, 60} };
+		int[][][] ns3 = { { {10, 20, 30}, {40, 50, 60} }, { {10, 20, 30}, {40, 50, 60} } };
+	}
+	
+	public static void m9() {
+		
+		//다차원 배열
+		//	- 1차원 배열
+		//	- 2차원 배열
+		//	- 3차원 배열
+		//	- n차원 배열
+		
+		//2차원 배열
+		int[][] ns = new int[2][3]; //2행 3열 -> 6개
+		
+		ns[0][0] = 100;
+		ns[0][1] = 200;
+		ns[0][2] = 300;
+		
+		ns[1][0] = 400;
+		ns[1][1] = 500;
+		ns[1][2] = 600;
+		
+		//1차원 배열 탐색 -> 단일 for문
+		//2차원 배열 탐색 -> 2중 for문
+		//3차원 배열 탐색 -> 3중 for문
+		
+		for (int i = 0; i < 2; i++) {
+			for (int j = 0; j < 3; j++) {
+				System.out.printf("ns[%d][%d] = %d\n", i, j, ns[i][j]);
+			}
+		}
+		
+		int[][][] ns2 = new int[2][3][4]; //24개
+		
+		ns2[0][2][3] = 100;
+		ns2[1][1][1] = 200;
+		ns2[1][0][0] = 300;
+		
+		for (int i = 0; i < 2; i++) {
+			for (int j = 0; j < 3; j++) {
+				for (int j2 = 0; j2 < 4; j2++) {
+//					System.out.printf("ns2[%d][%d][%d] = %d\n", i, j, j2, ns2[i][j][j2]);
+					System.out.print(ns2[i][j][j2] + "\t");
+				}
+				System.out.println();
+			}
+			System.out.println();
+		}
+		
+		//향상된 for문 - 비권장 -> 일반 for문
+		for (int[] temp : ns) {
+			for (int n : temp) {
+				System.out.println(n);
+			}
+		}
+		
+		System.out.println();
+		
+		ns[0][0] = 100;
+		ns[0][1] = 200;
+		ns[0][2] = 300;
+		
+		ns[1][0] = 400;
+		ns[1][1] = 500;
+		ns[1][2] = 600;
+		
+		System.out.println(ns.length);
+		
+		for (int i = 0; i < ns.length; i++) {
+			for (int j = 0; j < ns[0].length; j++) {
+				System.out.printf("ns[%d][%d] = %d\n", i, j, ns[i][j]);
+			}
+		}
+		
+		int[][][] ns3 = new int[3][4][5];
+		
+		//질문
+		//1. ns3의 자료형 -> int[][][], int 3차원 배열
+		//2. ns3[0] 의 자료형? -> int[][], int 2차원 배열
+		//3. ns3[0][0] 의 자료형? -> int[], int 1차원 배열
+		//4. ns3[0][0][0] 의 자료형? -> int, int 방
 	}
 	
 	public static void m8() {
 		
 		//Tip
 		//프로젝트
+		//	- 임의의 데이터 생성
 		
+		//회원 관리 프로그램
+		//1. 회원 정보
+		//	- 이름 : ? -> 숫자
+		//	- 주소 : ? -> 숫자
+		//	- 나이 : 숫자
+		//	- 성별 : 숫자 논리(true, false)
+		
+		//Random + 배열 (+ 클래스)
+		//회원 100명 분량
+		int count = 100;
+		Random rnd = new Random();
+		
+		//이름을 임의로 생성하기 위한 준비물
+		String[] n1 = {"김", "이", "박", "최", "정", "한", "지", "임", "안", "조"}; //성
+		String[] n2 = {"대", "은", "창", "미", "준", "수", "영", "우", "진", "리", "인", "재", "하", "혁"}; //이름
+		
+		//주소
+		String[] a1 = {"서울시", "인천시", "부산시", "대전시", "광주시"};
+		String[] a2 = {"중구", "남구", "서구", "동구"};
+		String[] a3 = {"역삼동", "대치동", "상일동", "중앙동", "하일동"};
+		
+		int[] age = new int[count];
+		
+		String[] gender = new String[count];
+		
+		String[] name = new String[count];
+		
+		String[] address = new String[count];
+		
+		for (int i = 0; i < count; i++) {
+			
+			//나이(20 ~ 60 -> 0 ~ 40 + 20)
+			age[i] = rnd.nextInt(41) + 20;
+			
+			//0 -> 남자, 1 -> 여자
+			gender[i] = rnd.nextInt(2) == 0 ? "남자" : "여자";
+			
+			//이름
+			name[i] = n1[rnd.nextInt(n1.length)] + n2[rnd.nextInt(n2.length)] + n2[rnd.nextInt(n2.length)];
+			
+			//주소
+			address[i] = a1[rnd.nextInt(a1.length)] + " " + a2[rnd.nextInt(a2.length)] + " " + a3[rnd.nextInt(a3.length)] + " " + (rnd.nextInt(50) + 1) + "번지";
+		}
+		
+		//출력
+		System.out.println("[이름]\t[나이]\t[성별]\t[주소]\t");
+		for (int i = 0; i < count; i++) {
+			System.out.printf("%s\t%d세\t%s\t%s\n", name[i], age[i], gender[i], address[i]);
+		}
 	}
 	
 	public static void m7() {
