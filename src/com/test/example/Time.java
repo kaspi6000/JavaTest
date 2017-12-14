@@ -54,10 +54,19 @@ public class Time {
 	public Time(int sec) {
 		
 //		this(0, 0, sec);
-		
 		//직접 구현
-		if (sec >= 0) {
-			
+		if (sec >= 0 && sec < 60) {
+			this.sec = sec;
+		}else {
+			min = min + sec / 60;
+			this.sec = sec % 60;	
+		}
+		
+		if(min >= 0 && min < 60) {
+			min = min;
+		}else {
+			hour = hour + min / 60;
+			min = min % 60;
 		}
 	}
 	
