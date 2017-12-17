@@ -48,11 +48,11 @@ public class Pen {
 		if (this.ink >= 2) {
 			System.out.printf("%s색으로 선을 그렸습니다\n", color);
 			this.ink = this.ink - 2;
+			Pen.total += 2;
+			lineCount++;
 		}else {
 			System.out.println("잉크가 모자랍니다\n");
 		}
-		Pen.total += 2;
-		lineCount++;
 	}
 	
 	public void drawLine(int thick) {
@@ -61,11 +61,11 @@ public class Pen {
 		if (this.ink >= 2 * thick) {
 			System.out.printf("%s색으로 선을 그렸습니다\n", color);
 			this.ink = ink - thick * 2;
+			Pen.total += 2 * thick;
+			lineCount++;
 		}else {
 			System.out.println("잉크가 모자랍니다\n");
 		}
-		Pen.total += 2 * thick;
-		lineCount++;
 	}
 	
 	public void drawCircle() {
@@ -74,11 +74,11 @@ public class Pen {
 		if (this.ink >= 3) {
 			System.out.printf("%s색으로 원을 그렸습니다\n", color);
 			this.ink = this.ink - 3;
+			Pen.total += 3;
+			circleCount++;
 		}else {
 			System.out.println("잉크가 모자랍니다\n");
 		}
-		Pen.total += 3;
-		circleCount++;
 	}
 	
 	public void drawCircle(int thick) {
@@ -86,11 +86,11 @@ public class Pen {
 		if (this.ink >= 3 * thick) {
 			System.out.printf("%s색으로 원을 그렸습니다\n", color);
 			this.ink = ink - thick * 3;
+			Pen.total += 3 * thick;
+			circleCount++;
 		}else {
 			System.out.println("잉크가 모자랍니다\n");
 		}
-		Pen.total += 3 * thick;
-		circleCount++;
 	}
 	
 	public void drawRectangle() {
@@ -99,11 +99,11 @@ public class Pen {
 		if (this.ink >= 4) {
 			System.out.printf("%s색으로 사각형을 그렸습니다\n", color);
 			this.ink = this.ink - 4;
+			Pen.total += 4;
+			rectangleCount++;
 		}else {
 			System.out.println("잉크가 모자랍니다\n");
 		}
-		Pen.total += 4;
-		rectangleCount++;
 	}
 	
 	public void drawRectangle(int thick) {
@@ -112,11 +112,11 @@ public class Pen {
 			if (this.ink >= 4 * thick) {
 				System.out.printf("%s색으로 사각형을 그렸습니다\n", color);
 				this.ink = ink - thick * 4;
+				Pen.total += 4 * thick;
+				rectangleCount++;
 			}else {
 				System.out.println("잉크가 모자랍니다\n");
 			}
-			Pen.total += 4 * thick;
-			rectangleCount++;
 	}
 
 	public String getColor() {
