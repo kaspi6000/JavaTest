@@ -1,7 +1,5 @@
 package com.test.example;
 
-import java.lang.reflect.Constructor;
-
 public class Ex61_Inheritance {
 
 	public static void main(String[] args) {
