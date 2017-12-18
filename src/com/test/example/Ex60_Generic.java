@@ -2,8 +2,6 @@ package com.test.example;
 
 import java.util.Random;
 
-import javax.print.attribute.standard.Destination;
-
 public class Ex60_Generic {
 
 	public static void main(String[] args) {
