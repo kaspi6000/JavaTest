@@ -45,15 +45,15 @@ public class Ex58_Enum {
 			System.out.println("바이크");
 		}
 		switch (sel2) {
-		case SUBWAY:
+		case SUBWAY : System.out.println("지하철");
 			break;
-		case BUS :
+		case BUS : System.out.println("버스");
 			break;
-		case TAXI : 
+		case TAXI : System.out.println("택시");
 			break;
-		case BIKE : 
+		case BIKE : System.out.println("바이크");
 			break;
-		default:
+		default : System.out.println("Anyway");
 			break;
 		}
 	}
@@ -71,7 +71,8 @@ enum Transfer {
 	SUBWAY,
 	BUS,
 	TAXI,
-	BIKE
+	BIKE,
+	TEST
 }
 
 //열거형 선언하기
