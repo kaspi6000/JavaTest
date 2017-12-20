@@ -9,12 +9,15 @@ public class CollectionTest {
 		System.out.println("test");
 		stack.push("100");
 		stack.pop();
-		stack.size();
+//		stack.size();
 		stack.push("100");
-		stack.size();
+//		stack.size();
+		stack.push("200");
 		
 		MyStack stack1 = new MyStack();
 		
+		System.out.println();
+//		stack1.size();
 		stack1.push("100");
 		stack1.push("200");
 		stack1.push("300");
@@ -22,9 +25,22 @@ public class CollectionTest {
 		stack1.push("500");
 		stack1.push("600");
 		stack1.push("510");
+//		stack1.size();
+//		stack1.pop();
+//		stack1.size();
+//		
+//		stack1.pop();
+//		stack1.size();
+//		
+//		stack1.pop();
+//		stack1.size();
 		stack1.push("620");
 		stack1.push("530");
 		stack1.push("640");
+		stack1.pop();
+		stack1.peak();
+		System.out.println(stack1);
+		System.out.println(stack);
 		
 		
 		

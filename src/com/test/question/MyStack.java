@@ -10,7 +10,7 @@ public class MyStack {
 		//2. 생성자
 		public MyStack() {
 			
-			index = 0;
+			index = -1;
 			
 			capacity = 4;
 			
@@ -19,7 +19,7 @@ public class MyStack {
 		
 		public MyStack(int capacity) {
 			
-			index = 0;
+			index = -1;
 			
 			list = new String[capacity];
 		}
@@ -28,41 +28,42 @@ public class MyStack {
 		@Override
 		public String toString() {
 			
-			for (String list : list) {
-				
-//				System.out.printf("%s\t%5s\t%s\t%s\n", m.getName(), m.getAge(), m.getTel(), m.getAddress());
-			}
-			return null;
+			String result = "[";
+			
+		  for (int i = 0; i <= index; i++)
+			  result += list[i] + " ";
+		  
+		  return result + "]";
 		}
 		
 		//4. 주업무
 		public void push(String s) {
 			
-//			list[++index] = s;
-			
-			if (list.length == capacity) newArray();
+			System.out.println("length : " + list.length);
+			System.out.println("capacity : " + capacity);
+			if (list.length - 1 == index) newArray();
 			 
 			list[++index] = s;
+			System.out.println("index : " + index);
 			
 			System.out.println(list[index]);
 		}
 		
 		public void newArray() {
 			
-			String[] newlist = new String[capacity * 2];
+			String[] newList = new String[list.length * 2];
 			
-			for (int i = 0; i < capacity; i++) {
+			for (int i = 0; i < list.length; i++) {
 				
-				newlist[i] = list[i];
+				newList[i] = list[i];
 			}
-			
-			list = newlist;
+			list = newList;
 		}
 		
 		public String pop() {
 			
 			System.out.println(list[index]);
-			return list[--index];
+			return list[index--];
 		}
 		public void size() {
 			
