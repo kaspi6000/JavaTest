@@ -6,13 +6,22 @@ public class CollectionTest {
 		
 		MyStack stack = new MyStack(100);
 		
-		System.out.println("test");
-		stack.push("100");
-		stack.pop();
+//		System.out.println("test");
+//		stack.push("100");
+//		stack.pop();
 //		stack.size();
-		stack.push("100");
+//		stack.push("100");
 //		stack.size();
-		stack.push("200");
+//		stack.push("200");
+//		stack.push("300");
+//		stack.push("400");
+//		stack.push("500");
+//		stack.size();
+//		stack.peak();
+//		stack.peak();
+//		stack.size();
+//		stack.pop();
+//		stack.size();
 		
 		MyStack stack1 = new MyStack();
 		
@@ -39,8 +48,10 @@ public class CollectionTest {
 		stack1.push("640");
 		stack1.pop();
 		stack1.peak();
+		stack1.trimToSize();
+		stack1.push("700");
+		
 		System.out.println(stack1);
-		System.out.println(stack);
 		
 		
 		

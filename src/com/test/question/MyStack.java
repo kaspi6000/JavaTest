@@ -10,7 +10,7 @@ public class MyStack {
 		//2. 생성자
 		public MyStack() {
 			
-			index = -1;
+			index = 0;
 			
 			capacity = 4;
 			
@@ -19,7 +19,7 @@ public class MyStack {
 		
 		public MyStack(int capacity) {
 			
-			index = -1;
+			index = 0;
 			
 			list = new String[capacity];
 		}
@@ -30,23 +30,24 @@ public class MyStack {
 			
 			String result = "[";
 			
-		  for (int i = 0; i <= index; i++)
-			  result += list[i] + " ";
+			for (int i = 0; i < index; i++)
+				result += list[i] + " ";
 		  
-		  return result + "]";
+			return result + "]";
 		}
 		
 		//4. 주업무
 		public void push(String s) {
 			
 			System.out.println("length : " + list.length);
-			System.out.println("capacity : " + capacity);
-			if (list.length - 1 == index) newArray();
+			if (list.length == index) newArray();
 			 
-			list[++index] = s;
-			System.out.println("index : " + index);
+			list[index] = s;
 			
 			System.out.println(list[index]);
+			System.out.println("index : " + index);
+			
+			index++;
 		}
 		
 		public void newArray() {
@@ -62,7 +63,7 @@ public class MyStack {
 		
 		public String pop() {
 			
-			System.out.println(list[index]);
+			System.out.println(list[index - 1]);
 			return list[index--];
 		}
 		public void size() {
@@ -71,11 +72,15 @@ public class MyStack {
 		}
 		public void peak() {
 			
-			System.out.println(list[index]);
+			System.out.println(list[index - 1]);
 		}
 		public void trimToSize() {
 			
-			
+			String[] newList = new String[index];
+			for (int i=0; i<index; i++){
+				newList[i] = list[i];
+			}
+			list = newList;
 		}
 }
 
