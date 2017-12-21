@@ -1,5 +1,7 @@
 package com.test.question;
 
+import java.io.File;
+
 public class Test {
 
 	/*
@@ -58,4 +60,65 @@ public class Test {
 	  	리소스]	직원
 	  	결과]		분류가 완료되었습니다.
 	 */
+	
+	public static void main(String[] args) {
+		
+		solution1();
+		//solution2();
+	}
+
+	private static void solution2() {
+		
+//		문제2.
+//		요구사항] 이미지 파일이 확장자별로 있다. 확장자별로 몇개인지 카운트?
+//		리소스] 	확장자별 카운트
+//		결과]		*.gif : 10개
+//				*.jpg : 5개
+//				*.png : 3개
+//		추가]		mouse.bmp 추가
+//				-> 소스 수정없이 *.bmp : 1개
+//		힌트]		HashMap 사용
+		
+		
+	}
+
+	private static void solution1() {
+
+//		문제1.
+//	 	요구사항] 음악 파일이 100개 있다. 파일명 앞에 숫자를 붙이시오.
+//	 	리소스]	음악파일
+//	 	결과]		
+//	 	[001]7 go up-Yum-Yum (얌얌).mp3
+//	 	[002]10cm-봄이 좋냐__.mp3
+//	 	..
+//	 	[100]헤이즈-돌아오지마 (Feat. 용준형 Of 비스트).mp3
+		
+		String path = "D:\\파일_디렉토리_문제\\음악 파일\\Music";
+		
+		File dir = new File(path);
+		
+		int num = 1;
+		
+		File[] list = dir.listFiles();
+		
+		for (File file : list) {
+			
+			if (file.isFile()) {
+				
+				File rename = new File(String.format("%s\\[%s]%s", path, getNum(num), file.getName()));
+				file.renameTo(rename);
+				num++;	
+			}
+		}
+		
+		System.out.println("수정했습니다.");
+		
+	}
+
+	private static String getNum(int num) {
+		
+		if (num < 10) return "00" + num;
+		else if (num < 100) return "0" + num;
+		else return "" + num;	
+	}
 }
