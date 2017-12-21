@@ -78,7 +78,7 @@ public class Test {
 //		추가]		mouse.bmp 추가
 //				-> 소스 수정없이 *.bmp : 1개
 //		힌트]		HashMap 사용
-		
+		d
 		
 	}
 
