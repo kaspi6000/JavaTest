@@ -67,8 +67,75 @@ public class Test {
 	public static void main(String[] args) {
 		
 		//solution1();
-		solution2();
+		//solution2();
+		//solution3();
 		//solution4();
+		solution5();
+	}
+	
+	private static void solution5() {
+		
+//		문제5.
+//		요구사항] Music_1 과 Music_2 폴더를 서로 비교해서 양쪽 폴더에 모두 존재하는 파일만을 출력하시오.(중복 파일 골라내기)
+//		리소스]	동일 파일
+//		결과]
+//		7 go up-Yum-Yum (얌얌).mp3
+//		10cm-봄이 좋냐_.mp3
+//		..
+		String path = "D:\\파일_디렉토리_문제\\동일 파일\\Music_1";
+		
+		String path1 = "D:\\파일_디렉토리_문제\\동일 파일\\Music_2";
+	}
+
+	static int fileCount = 0;
+	
+	static int dirCount = 0;
+
+	private static void solution3() {
+		
+//		문제3.
+//		요구사항] delete 폴더를 삭제하시오
+//		리소스]	폴더 삭제 > delete
+//		결과]		폴더를 삭제했습니다.
+//		힌트]		파일 개수 -> 재귀 메소드
+//		추가]		폴더 3개와 파일 6개를 삭제했습니다.
+		
+		String path = "D:\\파일_디렉토리_문제\\폴더 삭제";
+		
+		File dir = new File(path);
+		
+		getFileCount(dir);
+		
+		System.out.printf("폴더 %d개와 파일 %d개를 삭제했습니다.", dirCount, fileCount);
+	}
+	
+	private static void getFileCount(File dir) {
+		
+		if (dir.exists()) {
+			
+			File[] files = dir.listFiles();
+			
+			for (File file : files) {
+				
+				if (file.isFile()) {
+					
+					file.delete();
+					//이 부분이 업무에 맞게 수정 > 해당 폴더와 관련된 정보를 취득할 수 있다.
+					fileCount++;
+				}
+			}
+			
+			for (File subdir : files) {
+				
+				if (subdir.isDirectory()) {
+					
+					dirCount++;
+					//부모와 동일한 업무 다시 반복
+					getFileCount(subdir);
+					subdir.delete();
+				}
+			}
+		}
 	}
 
 	private static void solution4() {
