@@ -1,6 +1,9 @@
 package com.test.question;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class Test {
 
@@ -63,8 +66,35 @@ public class Test {
 	
 	public static void main(String[] args) {
 		
-		solution1();
-		//solution2();
+		//solution1();
+		solution2();
+		//solution4();
+	}
+
+	private static void solution4() {
+		
+//		문제4.
+//		요구사항] 사이즈가 0byte인 파일만 골라서 삭제하시오.
+//		리소스]	파일 제거
+//		결과]		총 34개의 파일을 삭제했습니다.
+		
+		String path = "D:\\파일_디렉토리_문제\\파일 제거";
+		
+		File dir = new File(path);
+		
+		File[] files = dir.listFiles();
+		
+		for (File file : files) {
+			
+			if (file.isFile()) {
+				
+				if (file.length() == 0) {
+					
+					file.delete();
+				}
+			}
+		}
+		System.out.println("삭제 완료");
 	}
 
 	private static void solution2() {
@@ -78,8 +108,50 @@ public class Test {
 //		추가]		mouse.bmp 추가
 //				-> 소스 수정없이 *.bmp : 1개
 //		힌트]		HashMap 사용
-		d
 		
+		String path = "D:\\파일_디렉토리_문제\\확장자별 카운트";
+		
+		File dir = new File(path);
+		
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		
+		File[] list = dir.listFiles();
+		
+		for (File file : list) {
+			
+			if (file.isFile()) {
+				
+				String name = file.getName();
+				
+				String extension = name.substring(name.lastIndexOf(".") + 1);
+				
+//				System.out.println(extension);
+//				System.out.println(map.containsKey(extension));
+				
+				if(!map.containsKey(extension)) {
+					
+					map.put(extension, 1);
+//					System.out.println(extension);
+//					System.out.printf("%s : %d\n", extension, map.get(extension));
+				}else {
+					
+					map.put(extension, map.get(extension) + 1);
+//					System.out.println(extension);
+//					System.out.printf("%s : %d\n", extension, map.get(extension));
+				}
+			}
+		}
+		
+		Set<String> set = map.keySet();
+		
+		Iterator<String> iter = set.iterator();
+		
+		while (iter.hasNext()) {
+			
+			String key = iter.next();
+			
+			System.out.printf("%s : %d개\n", key, map.get(key));
+		}
 	}
 
 	private static void solution1() {

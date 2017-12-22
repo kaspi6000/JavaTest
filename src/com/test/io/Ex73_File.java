@@ -34,9 +34,32 @@ public class Ex73_File {
 		
 		int count = 0;	//누적 변수
 		
+		int dirCount = 0;
+		
+		dirCount = getDirCount(dir, count);
+		
 		count = getFileCount(dir, count);
 		
 		System.out.println("파일 갯수 : " + count);
+		
+		System.out.println("폴더 갯수 : " + dirCount);
+	}
+
+	private static int getDirCount(File dir, int dirCount) {
+		
+		if (dir.exists()) {
+			
+			File[] dirs = dir.listFiles();
+			
+			for (File folder : dirs) {
+				
+				if (folder.isDirectory()) {
+					
+				}
+			}
+		}
+		
+		return dirCount;
 	}
 
 	private static int getFileCount(File dir, int count) {
