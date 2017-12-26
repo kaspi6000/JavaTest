@@ -70,9 +70,51 @@ public class Test {
 		//solution2();
 		//solution3();
 		//solution4();
-		solution5();
+		//solution5();
+		solution7();
 	}
 	
+	private static void solution7() {
+		
+//		문제7.
+//	  	요구사항] 직원 폴더를 접근 -> 직원별 이름으로 폴더 생성 -> 년도별 폴더 생성 -> 각 파일들을 해당 폴더로 이동
+//	  	리소스]	직원
+//	  	결과]		분류가 완료되었습니다.
+		String path = "D:\\파일_디렉토리_문제\\직원";
+		
+		File dir = new File(path);
+		
+		File[] files = dir.listFiles(); //파일 목록
+		
+		for (File file : files) {
+			
+			if (file.isFile()) {
+				
+				int index = file.getName().indexOf("_");
+				
+				String name = file.getName().substring(0, index);
+				System.out.println(name);
+				
+				String year = file.getName().substring(index + 1, file.getName().replace("__", "_").lastIndexOf("_"));
+				System.out.println(year);
+				
+				//이름으로 폴더 생성하기
+				File nameDir = new File(path + "\\" + name);
+				
+				if (!nameDir.exists()) nameDir.mkdir();
+
+				//이름 > 년도로 폴더 생성하기
+				File yearDir = new File(path + "\\" + name + "\\" + year);
+				
+				if (!yearDir.exists()) yearDir.mkdir();
+				
+				//파일 이름 > 년도 폴더로 이동하기
+				File move = new File(path + "\\" + name + "\\" + year + "\\" + file.getName());
+				file.renameTo(move);
+			}
+		}
+	}
+
 	private static void solution5() {
 		
 //		문제5.

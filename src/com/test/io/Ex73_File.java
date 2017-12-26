@@ -213,7 +213,7 @@ public class Ex73_File {
 		}
 		
 		//회원 정보 -> 각 회원별 개인 파일을 저장할 폴더가 필요
-		String[] list = new String[];
+//		String[] list = new String[];
 	}
 	
 	private static void m4() {
