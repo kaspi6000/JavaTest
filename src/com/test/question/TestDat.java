@@ -68,8 +68,8 @@ public class TestDat {
 			}
 			reader.close();
 			
-			System.out.println(list);
-			System.out.println(list1);
+			System.out.println("list : " + list);
+			System.out.println("list1 : " + list1);
 			
 			for (int i = 0; i < list.size(); i++) {
 				
@@ -87,6 +87,7 @@ public class TestDat {
 //			System.out.println(num);
 //			System.out.println(list.get(7).equals(list1.get(2)));
 //			System.out.println(list.get(7).contains("class"));
+			System.out.println(list1.get(2).contains(list.get(7)));
 			
 		} catch (Exception e) {
 			System.out.println("load : " + e.toString());
