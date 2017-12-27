@@ -3,12 +3,11 @@ package com.test.question;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class TestDat {
-	
-	private static int num;
 	
 	public static void main(String[] args) {
 		
@@ -25,16 +24,10 @@ public class TestDat {
 //		continue : 2회
 //		...
 //		abstract : 0회
-		String path = "/home/kang/eclipse-workspace/JavaTest1216/자바예약어.dat";
-		String path1 = "/home/kang/eclipse-workspace/JavaTest1216/자바소스.java";
+		String path = "D:\\파일_입출력_문제\\자바예약어.dat";
+		String path1 = "D:\\파일_입출력_문제\\자바소스.java";
 		BufferedReader reader = null;
-		String test = "";
-		String[] t;
-//		int num;
 		try {
-			
-			reader = new BufferedReader(new FileReader(path));
-			
 			
 			String line = "";
 			
@@ -42,8 +35,8 @@ public class TestDat {
 			
 			ArrayList<String> list = new ArrayList<String>();
 			ArrayList<String> list1 = new ArrayList<String>();
-			ArrayList<String> testt = new ArrayList<String>();
-			ArrayList<Integer> cntList = new ArrayList<Integer>();
+			
+			reader = new BufferedReader(new FileReader(path));
 			
 			while ((line = reader.readLine()) != null) {
 			
@@ -59,86 +52,44 @@ public class TestDat {
 				
 				line = line.trim();
 				String[] temp = line.split(" ");
+				
 				for (int i = 0; i < temp.length; i++) {
 					
 					list1.add(temp[i]);
 				}
-//				System.out.println(Arrays.toString(temp));
 			}
-			System.out.println("list : " + list);
-			System.out.println("list1 : " + list1);
 			
-			for (int i = 0; i < list1.size(); i++) {
+			for (int i = 0; i < list.size(); i++) {
 				
-				for (int j = 0; j < list.size(); j++) {
+				for (int j = 0; j < list1.size(); j++) {
 					
-					if (list1.get(i).contains(list.get(j))) {
+					if (list1.get(j).contains(list.get(i))) {
 						
-						num = 0;
-						num++;
-						test += list.get(j) + " ";
+						String extension = list.get(i);
 						
-//						System.out.println(test);
-//						System.out.printf("%s : %d회\n", list.get(j), num);
+						if (!map.containsKey(extension)) {
+							
+							map.put(extension, 1);
+						}else {
+							
+							map.put(extension, map.get(extension) + 1);
+						}
 					}
 				}
 			}
-			t = test.split(" ");
-			System.out.println(Arrays.toString(t));
-			for (int i = 0; i < t.length; i++) {
-				testt.add(t[i]);
-				int cnt = 0;
-				for(int searchIndex = i; searchIndex < t.length; searchIndex++){
-                    if(t[i] == t[searchIndex]){
-                        cnt++;
-                    }
-				}
-				cntList.add(cnt);
-				System.out.println(cnt);
-			}
-//			ArrayList<String> liss = new ArrayList<String>();
-//			String[] lis = test.split("\n");
-//			for (int i = 0; i < lis.length; i++) {
-//				liss.add(lis[i]);
-//				
-//			}
-//			for (int i = 0; i < list.size(); i++) {
-//				for (int j = 0; j < liss.size(); j++) {
-//					
-//					if (list.get(i).contains(liss.get(j))) {
-//						num = 0;
-//						num++;
-//						System.out.printf("%s : %d회\n", list.get(i), num);
-//					}
-//				}
-//			}
-			
-//			System.out.println("lis" + Arrays.toString(lis));
-//			System.out.println(liss);
-			System.out.println("test : " + test);
-			System.out.println(list.size());
-			System.out.println(list1.size());
-//			for (int i = 0; i < list.size(); i++) {
-//				
-//				for (int j = 0; j < list1.size(); j++) {
-////					String test = list.get(i);
-//					if (list.get(i).contains(list1.get(j))) {
-////					if(list1.contains(test)) {
-////						System.out.println("list1 : " + list1.get(0));
-//						num = 0;
-//						num++;
-//						System.out.printf("%s : %d회\n", list.get(i), num);
-//						break;
-//					}
-//				}
-//			}
-//			System.out.println(list.get(7));
-//			System.out.println(num);
-//			System.out.println(list.get(7).equals(list1.get(2)));
-			System.out.println(list.get(7).contains(list1.get(4)));
-			System.out.println(list1.get(4).contains(list.get(7)));
-			
 			reader.close();
+			
+			Set<String> set = map.keySet();
+			
+			Iterator<String> iter = set.iterator();
+			
+			while (iter.hasNext()) {
+				
+				String key = iter.next();
+				
+				System.out.printf("%s : %d회\n", key, map.get(key));
+			}
+			
 		} catch (Exception e) {
 			System.out.println("load : " + e.toString());
 		}
